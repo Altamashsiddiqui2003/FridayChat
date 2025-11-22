@@ -13,6 +13,7 @@ public class UserDAO {
 	
 	// Create A User Method 
 	public static boolean createUser(String username, String email, String password) throws SQLException {
+		
         String hash = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         String sql = "INSERT INTO users(username,email,password_hash) VALUES(?,?,?)";
         try (Connection c = DBConnection.getConnection();
@@ -62,3 +63,4 @@ public class UserDAO {
 	
 	
 }
+
